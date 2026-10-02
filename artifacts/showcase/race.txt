@@ -1,0 +1,20 @@
+┌───────────────────────────────────────── TORCH ARENA / Model Race ─────────────────────────────────────────┐
+│ Train. Race. Break. Resume.                                                                                │
+│ Sequential real training · COMPARABLE                                                                      │
+└────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+tiny_cnn · Dataset: synthetic_image_classification · Seed: 42 · Epochs: 4
+tiny_resnet · Dataset: synthetic_image_classification · Seed: 42 · Epochs: 4
+                                       Measured contestants                                        
+┌──────────────────────────────────────┬──────────────┬──────────┬──────────┬────────────┬────────┐
+│ Model / Run                          │ Accuracy (%) │ Val loss │ Time (s) │ Parameters │ Epochs │
+├──────────────────────────────────────┼──────────────┼──────────┼──────────┼────────────┼────────┤
+│ tiny_cnn                             │ 100.00%      │ 0.000079 │ 0.381    │ 554        │ 4      │
+│ run-4141941f8dce46ed9c78e906a66699c8 │              │          │          │            │        │
+├──────────────────────────────────────┼──────────────┼──────────┼──────────┼────────────┼────────┤
+│ tiny_resnet                          │ 100.00%      │ 0.000003 │ 0.398    │ 702        │ 4      │
+│ run-06656865c41f4eec8a9e72c86a991d5c │              │          │          │            │        │
+└──────────────────────────────────────┴──────────────┴──────────┴──────────┴────────────┴────────┘
+Highest accuracy: run-4141941f8dce46ed9c78e906a66699c8, run-06656865c41f4eec8a9e72c86a991d5c
+Lowest validation loss: run-06656865c41f4eec8a9e72c86a991d5c
+Fastest measured training: run-4141941f8dce46ed9c78e906a66699c8
+Fewest parameters: run-4141941f8dce46ed9c78e906a66699c8

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+.r1 {color: #800080; text-decoration-color: #800080}
+.r2 {font-style: italic}
+.r3 {font-weight: bold}
+body {
+    color: #000000;
+    background-color: #ffffff;
+}
+</style>
+</head>
+<body>
+    <pre style="font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><code style="font-family:inherit"><span class="r1">┌───────────────────────────────────────── TORCH ARENA / Model Race ─────────────────────────────────────────┐</span>
+<span class="r1">│</span> Train. Race. Break. Resume.                                                                                <span class="r1">│</span>
+<span class="r1">│</span> Sequential real training · COMPARABLE                                                                      <span class="r1">│</span>
+<span class="r1">└────────────────────────────────────────────────────────────────────────────────────────────────────────────┘</span>
+tiny_cnn · Dataset: synthetic_image_classification · Seed: 42 · Epochs: 4
+tiny_resnet · Dataset: synthetic_image_classification · Seed: 42 · Epochs: 4
+<span class="r2">                                       Measured contestants                                        </span>
+┌──────────────────────────────────────┬──────────────┬──────────┬──────────┬────────────┬────────┐
+│<span class="r3"> Model / Run                          </span>│<span class="r3"> Accuracy (%) </span>│<span class="r3"> Val loss </span>│<span class="r3"> Time (s) </span>│<span class="r3"> Parameters </span>│<span class="r3"> Epochs </span>│
+├──────────────────────────────────────┼──────────────┼──────────┼──────────┼────────────┼────────┤
+│ tiny_cnn                             │ 100.00%      │ 0.000079 │ 0.381    │ 554        │ 4      │
+│ run-4141941f8dce46ed9c78e906a66699c8 │              │          │          │            │        │
+├──────────────────────────────────────┼──────────────┼──────────┼──────────┼────────────┼────────┤
+│ tiny_resnet                          │ 100.00%      │ 0.000003 │ 0.398    │ 702        │ 4      │
+│ run-06656865c41f4eec8a9e72c86a991d5c │              │          │          │            │        │
+└──────────────────────────────────────┴──────────────┴──────────┴──────────┴────────────┴────────┘
+Highest accuracy: run-4141941f8dce46ed9c78e906a66699c8, run-06656865c41f4eec8a9e72c86a991d5c
+Lowest validation loss: run-06656865c41f4eec8a9e72c86a991d5c
+Fastest measured training: run-4141941f8dce46ed9c78e906a66699c8
+Fewest parameters: run-4141941f8dce46ed9c78e906a66699c8
+</code></pre>
+</body>
+</html>

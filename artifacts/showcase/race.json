@@ -1,0 +1,47 @@
+{
+  "comparable": true,
+  "complete": true,
+  "rows": [
+    {
+      "run_id": "run-4141941f8dce46ed9c78e906a66699c8",
+      "model": "tiny_cnn",
+      "status": "COMPLETED",
+      "dataset": "synthetic_image_classification",
+      "seed": 42,
+      "epochs": 4,
+      "accuracy_fraction": 1.0,
+      "val_loss": 7.874906077631749e-05,
+      "seconds": 0.3809498999908101,
+      "parameters": 554
+    },
+    {
+      "run_id": "run-06656865c41f4eec8a9e72c86a991d5c",
+      "model": "tiny_resnet",
+      "status": "COMPLETED",
+      "dataset": "synthetic_image_classification",
+      "seed": 42,
+      "epochs": 4,
+      "accuracy_fraction": 1.0,
+      "val_loss": 3.263348048676562e-06,
+      "seconds": 0.39792400001897477,
+      "parameters": 702
+    }
+  ],
+  "categories": {
+    "Highest accuracy": [
+      "run-4141941f8dce46ed9c78e906a66699c8",
+      "run-06656865c41f4eec8a9e72c86a991d5c"
+    ],
+    "Lowest validation loss": [
+      "run-06656865c41f4eec8a9e72c86a991d5c"
+    ],
+    "Fastest measured training": [
+      "run-4141941f8dce46ed9c78e906a66699c8"
+    ],
+    "Fewest parameters": [
+      "run-4141941f8dce46ed9c78e906a66699c8"
+    ]
+  },
+  "note": "COMPARABLE",
+  "race_id": "race-039b32f2392542dab197617f69fd8735"
+}

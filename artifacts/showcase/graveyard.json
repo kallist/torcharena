@@ -1,0 +1,113 @@
+{
+  "run_id": "run-0f55a5ffea9b482fa45aad993e074553",
+  "name": "showcase-tiny_cnn",
+  "status": "FAILED",
+  "created_at": "2026-10-02T16:54:51.067196+00:00",
+  "updated_at": "2026-10-02T16:54:52.998255+00:00",
+  "ended_at": "2026-10-02T16:54:52.998255+00:00",
+  "config_hash": "a93c644a7e46f4e0f6094f0d53105838a7535925bc21262c8b76d7bfeb60ffca",
+  "last_epoch": 0,
+  "global_step": 2,
+  "checkpoint_path": "runs/run-0f55a5ffea9b482fa45aad993e074553/checkpoints/last.pt",
+  "failure_type": "non_finite_loss",
+  "failure_message": "Detected non_finite_loss; inspect data and learning rate",
+  "config": {
+    "checkpoint": {
+      "every_n_steps": 2,
+      "keep_last": 2,
+      "save_best": true
+    },
+    "dataset": {
+      "name": "synthetic_image_classification",
+      "num_classes": 2,
+      "train_samples": 64,
+      "val_samples": 32
+    },
+    "early_stopping": {
+      "enabled": false,
+      "metric": "val_loss",
+      "mode": "min",
+      "patience": 3
+    },
+    "experiment": {
+      "name": "showcase-tiny_cnn",
+      "seed": 42
+    },
+    "model": {
+      "name": "tiny_cnn",
+      "num_classes": 2
+    },
+    "training": {
+      "amp": false,
+      "batch_size": 16,
+      "deterministic": true,
+      "device": "cpu",
+      "epochs": 4,
+      "learning_rate": 0.02
+    }
+  },
+  "environment": {
+    "python": "3.12.14",
+    "torch": "2.8.0+cpu",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "device": "cpu",
+    "cuda_available": false,
+    "cuda_version": null,
+    "git_sha": "e166b49b0a23455b808116fb7d12dd01395cc490",
+    "git_dirty": true
+  },
+  "summary": {
+    "best_metric_name": "val_loss",
+    "best_metric": null,
+    "best_epoch": null,
+    "last_epoch": 0,
+    "global_step": 3,
+    "duration_seconds": 0.08193780001602136,
+    "parameters": 554,
+    "final_metrics": {}
+  },
+  "metrics": [],
+  "failures": [
+    {
+      "condition": "non_finite_loss",
+      "message": "Detected non_finite_loss; inspect data and learning rate",
+      "time": "2026-10-02T16:54:52.993952+00:00",
+      "epoch": 0,
+      "step": 3,
+      "traceback": "Traceback (most recent call last):\n  File \"<workspace>\\torcharena\\trainer.py\", line 233, in fit\n    TrainingGuard.finite(loss, \"non_finite_loss\")\n  File \"<workspace>\\torcharena\\safety.py\", line 19, in finite\n    raise TrainingError(condition, f\"Detected {condition}; inspect data and learning rate\")\ntorcharena.safety.TrainingError: Detected non_finite_loss; inspect data and learning rate\n",
+      "detected_condition": "non_finite_loss",
+      "confirmed_cause": "demo injection",
+      "checkpoint_available": true
+    }
+  ],
+  "transitions": [
+    {
+      "source": null,
+      "target": "CREATED",
+      "at": "2026-10-02T16:54:51.072082+00:00",
+      "reason": "new experiment"
+    },
+    {
+      "source": "CREATED",
+      "target": "VALIDATING",
+      "at": "2026-10-02T16:54:52.918656+00:00",
+      "reason": ""
+    },
+    {
+      "source": "VALIDATING",
+      "target": "RUNNING",
+      "at": "2026-10-02T16:54:52.940937+00:00",
+      "reason": ""
+    },
+    {
+      "source": "RUNNING",
+      "target": "FAILED",
+      "at": "2026-10-02T16:54:52.998821+00:00",
+      "reason": "Detected non_finite_loss; inspect data and learning rate"
+    }
+  ],
+  "recovery": [
+    true,
+    "runs/run-0f55a5ffea9b482fa45aad993e074553/checkpoints/last.pt"
+  ]
+}

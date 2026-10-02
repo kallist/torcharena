@@ -1,0 +1,10 @@
+{
+  "run_id": "run-8f6b0c79afbd4b47800fcd5d68a6067e",
+  "baseline_id": "run-0dea83bc3a1d49f39dfe159dacdeeeaa",
+  "status": "COMPLETED",
+  "safe_step": 3,
+  "max_parameter_error": 0.0,
+  "tolerance": 1e-07,
+  "equivalent": true,
+  "optimizer_restored": true
+}

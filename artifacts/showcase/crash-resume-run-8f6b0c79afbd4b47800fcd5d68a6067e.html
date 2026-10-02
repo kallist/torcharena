@@ -1,0 +1,128 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TorchArena — showcase-tiny_cnn</title><style>
+body{background:#0f172a;color:#e2e8f0;font:16px system-ui;margin:0;padding:4vw}
+main{max-width:1000px;margin:auto}h1{font-size:3rem}h2{color:#c4b5fd}
+.tag{color:#fbbf24}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#1e293b;
+padding:20px;border-radius:12px}table{width:100%;border-collapse:collapse}
+td,th{text-align:left;padding:12px;border-bottom:1px solid #475569}svg{max-width:700px}
+</style><main><p class="tag">TRAIN. RACE. BREAK. RESUME.</p><h1>TorchArena</h1>
+<h2>showcase-tiny_cnn · COMPLETED</h2>
+<p>tiny_cnn / synthetic_image_classification / seed
+42</p><p>Run: run-8f6b0c79afbd4b47800fcd5d68a6067e</p>
+<h2>Battle report</h2><pre>{
+  &quot;best_metric_name&quot;: &quot;val_loss&quot;,
+  &quot;best_metric&quot;: 7.874906077631749e-05,
+  &quot;best_epoch&quot;: 4,
+  &quot;last_epoch&quot;: 4,
+  &quot;global_step&quot;: 16,
+  &quot;duration_seconds&quot;: 0.4088427000096999,
+  &quot;parameters&quot;: 554,
+  &quot;final_metrics&quot;: {
+    &quot;epoch&quot;: 4,
+    &quot;global_step&quot;: 16,
+    &quot;train_loss&quot;: 0.00036783606265089475,
+    &quot;train_accuracy&quot;: 1.0,
+    &quot;val_loss&quot;: 7.874906077631749e-05,
+    &quot;val_accuracy&quot;: 1.0
+  }
+}</pre>
+<h2>Metric history</h2><svg viewBox="0 0 600 220" role="img" aria-label="Validation loss by epoch"><polyline points="30.0,40.0 210.0,168.7 390.0,179.5 570.0,179.9" fill="none" stroke="#a78bfa" stroke-width="3"/><text x="30" y="210" fill="#cbd5e1">Validation loss · epoch →</text></svg><table><tr><th>Epoch</th><th>Train loss</th><th>Val loss</th>
+<th>Val accuracy (%)</th></tr><tr><td>1</td><td>0.478876</td><td>0.180110</td><td>100.00%</td></tr><tr><td>2</td><td>0.089178</td><td>0.014536</td><td>100.00%</td></tr><tr><td>3</td><td>0.006990</td><td>0.000678</td><td>100.00%</td></tr><tr><td>4</td><td>0.000368</td><td>0.000079</td><td>100.00%</td></tr></table>
+<h2>Recovery</h2><pre>[
+  false,
+  &quot;runs/run-8f6b0c79afbd4b47800fcd5d68a6067e/checkpoints/last.pt&quot;
+]</pre>
+<h2>Reproducibility</h2><pre>{
+  &quot;python&quot;: &quot;3.12.14&quot;,
+  &quot;torch&quot;: &quot;2.8.0+cpu&quot;,
+  &quot;platform&quot;: &quot;Windows-11-10.0.26200-SP0&quot;,
+  &quot;device&quot;: &quot;cpu&quot;,
+  &quot;cuda_available&quot;: false,
+  &quot;cuda_version&quot;: null,
+  &quot;git_sha&quot;: &quot;e166b49b0a23455b808116fb7d12dd01395cc490&quot;,
+  &quot;git_dirty&quot;: true
+}</pre>
+<p>Config SHA256: a93c644a7e46f4e0f6094f0d53105838a7535925bc21262c8b76d7bfeb60ffca</p>
+<h2>Config</h2><pre>{
+  &quot;checkpoint&quot;: {
+    &quot;every_n_steps&quot;: 2,
+    &quot;keep_last&quot;: 2,
+    &quot;save_best&quot;: true
+  },
+  &quot;dataset&quot;: {
+    &quot;name&quot;: &quot;synthetic_image_classification&quot;,
+    &quot;num_classes&quot;: 2,
+    &quot;train_samples&quot;: 64,
+    &quot;val_samples&quot;: 32
+  },
+  &quot;early_stopping&quot;: {
+    &quot;enabled&quot;: false,
+    &quot;metric&quot;: &quot;val_loss&quot;,
+    &quot;mode&quot;: &quot;min&quot;,
+    &quot;patience&quot;: 3
+  },
+  &quot;experiment&quot;: {
+    &quot;name&quot;: &quot;showcase-tiny_cnn&quot;,
+    &quot;seed&quot;: 42
+  },
+  &quot;model&quot;: {
+    &quot;name&quot;: &quot;tiny_cnn&quot;,
+    &quot;num_classes&quot;: 2
+  },
+  &quot;training&quot;: {
+    &quot;amp&quot;: false,
+    &quot;batch_size&quot;: 16,
+    &quot;deterministic&quot;: true,
+    &quot;device&quot;: &quot;cpu&quot;,
+    &quot;epochs&quot;: 4,
+    &quot;learning_rate&quot;: 0.02
+  }
+}</pre>
+<h2>Failures / detected conditions</h2><pre>[]</pre>
+<h2>Attempt history</h2><pre>[
+  {
+    &quot;source&quot;: null,
+    &quot;target&quot;: &quot;CREATED&quot;,
+    &quot;at&quot;: &quot;2026-10-02T16:54:46.525976+00:00&quot;,
+    &quot;reason&quot;: &quot;new experiment&quot;
+  },
+  {
+    &quot;source&quot;: &quot;CREATED&quot;,
+    &quot;target&quot;: &quot;VALIDATING&quot;,
+    &quot;at&quot;: &quot;2026-10-02T16:54:46.620891+00:00&quot;,
+    &quot;reason&quot;: &quot;&quot;
+  },
+  {
+    &quot;source&quot;: &quot;VALIDATING&quot;,
+    &quot;target&quot;: &quot;RUNNING&quot;,
+    &quot;at&quot;: &quot;2026-10-02T16:54:46.635914+00:00&quot;,
+    &quot;reason&quot;: &quot;&quot;
+  },
+  {
+    &quot;source&quot;: &quot;RUNNING&quot;,
+    &quot;target&quot;: &quot;INTERRUPTED&quot;,
+    &quot;at&quot;: &quot;2026-10-02T16:54:46.720150+00:00&quot;,
+    &quot;reason&quot;: &quot;user_interrupt&quot;
+  },
+  {
+    &quot;source&quot;: &quot;INTERRUPTED&quot;,
+    &quot;target&quot;: &quot;RESUMING&quot;,
+    &quot;at&quot;: &quot;2026-10-02T16:54:46.866497+00:00&quot;,
+    &quot;reason&quot;: &quot;loading local trusted last.pt&quot;
+  },
+  {
+    &quot;source&quot;: &quot;RESUMING&quot;,
+    &quot;target&quot;: &quot;RUNNING&quot;,
+    &quot;at&quot;: &quot;2026-10-02T16:54:46.873856+00:00&quot;,
+    &quot;reason&quot;: &quot;checkpoint restored&quot;
+  },
+  {
+    &quot;source&quot;: &quot;RUNNING&quot;,
+    &quot;target&quot;: &quot;COMPLETED&quot;,
+    &quot;at&quot;: &quot;2026-10-02T16:54:47.227214+00:00&quot;,
+    &quot;reason&quot;: &quot;&quot;
+  }
+]</pre>
+<p>Local trusted checkpoints only. Timing is descriptive; this is not a controlled benchmark.</p>
+</main></html>

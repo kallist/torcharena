@@ -1,0 +1,12 @@
+┌───────────────────────────────────── TORCH ARENA / Failure Graveyard ──────────────────────────────────────┐
+│ Explicit deterministic demo-only NaN injection                                                             │
+└────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+                                       Failure Graveyard                                        
+┌──────────────────────────────────────┬────────┬─────────────────┬──────────────┬─────────────┐
+│ Run / Name                           │ Status │ Cause           │ Epoch / Step │ Recoverable │
+├──────────────────────────────────────┼────────┼─────────────────┼──────────────┼─────────────┤
+│ run-0f55a5ffea9b482fa45aad993e074553 │ FAILED │ non_finite_loss │ 0 / 2        │ YES         │
+│ showcase-tiny_cnn                    │        │                 │              │             │
+└──────────────────────────────────────┴────────┴─────────────────┴──────────────┴─────────────┘
+Detected: non_finite_loss · Detected non_finite_loss; inspect data and learning rate
+Last healthy checkpoint preserved; failure traceback persisted.
