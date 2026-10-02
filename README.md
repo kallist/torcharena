@@ -1,32 +1,81 @@
 # TorchArena
 
-Train. Race. Break. Resume.
+> Train. Race. Break. Resume.
 
 A lightweight, reproducible PyTorch training workbench where models can compete,
-experiments survive interruptions, and failed runs leave useful evidence behind.
+interrupted experiments recover, and failed runs stay inspectable.
 
-**Two models race. A run breaks and resumes. A deliberately failed run stays inspectable.**
+[![CPU validation](https://github.com/kallist/torcharena/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/kallist/torcharena/actions/workflows/ci.yml)
+![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-7bddeb?logo=python&logoColor=white)
+![PyTorch 2.8](https://img.shields.io/badge/PyTorch-2.8-ffb36b?logo=pytorch&logoColor=white)
+[![MIT](https://img.shields.io/badge/License-MIT-a8bbce)](LICENSE)
 
-[Model Race](artifacts/showcase/race.html) ·
-[Crash → Resume](artifacts/showcase/crash-resume.html) ·
-[Failure Graveyard](artifacts/showcase/graveyard.html)
+![Recorded CLI replay: comparable model training, interrupted full-state recovery, and inspectable demo failure](docs/assets/torcharena-demo.gif)
 
-Static HTML previews can be downloaded/opened locally; GitHub does not render HTML
-as a live page. The terminal transcripts below are generated from real executions.
-This is a small local workbench, not a distributed ML platform.
+**[Model Race](#model-race)** · **[Crash → Resume](#crash--resume)** ·
+**[Failure Graveyard](#failure-graveyard)**
 
-## Why TorchArena exists
+*A ~22-second replay of real CLI transcripts, with editorial pacing. It is not a
+new training run or a speed benchmark. Prefer a static view? [Race](docs/assets/model-race.png) ·
+[Recovery](docs/assets/crash-resume.png) · [Failure](docs/assets/failure-graveyard.png).*
 
-Weights alone do not tell you how to continue an interrupted experiment. TorchArena
-keeps optimizer/scheduler/scaler/RNG state, a deterministic batch cursor and an
-inspectable SQLite history. Preflight catches broken batches before training;
-guarded failures preserve the last healthy checkpoint. The playful shell wraps
-ordinary, explainable PyTorch engineering.
+## See the three product paths
+
+### Model Race at a glance
+
+Two real PyTorch models train sequentially under comparable conditions; measured
+categories keep accuracy ties intact.
+[Transcript](artifacts/showcase/race.txt) · [JSON](artifacts/showcase/race.json) ·
+[HTML report](artifacts/showcase/race.html) · [Comparison design](docs/ARCHITECTURE.md)
+
+### Crash → Resume at a glance
+
+Interrupt training, reconstruct fresh objects, restore full state and continue.
+[Transcript](artifacts/showcase/crash-resume.txt) · [JSON](artifacts/showcase/crash-resume.json) ·
+[HTML report](artifacts/showcase/crash-resume.html) · [Recovery contract](docs/RECOVERY.md)
+
+### Failure Graveyard at a glance
+
+A deliberate demo-only NaN failure remains inspectable with diagnostics and its
+last healthy checkpoint.
+[Transcript](artifacts/showcase/graveyard.txt) · [JSON](artifacts/showcase/graveyard.json) ·
+[HTML report](artifacts/showcase/graveyard.html) · [Failure/recovery contract](docs/RECOVERY.md)
+
+GitHub displays HTML source; download the reports to open them locally. The terminal
+is the product interface, and these HTML files are static exports.
+
+## Why this project matters
+
+- **Full-state continuation:** model, optimizer, scheduler, scaler, RNG and batch cursor
+  restore together, rather than treating weights alone as a resumable experiment.
+- **Atomic checkpoint replacement:** failed temporary writes preserve the previous
+  snapshot; file/SQLite divergence has an explicit reconciliation rule.
+- **Owned mid-epoch ordering:** deterministic batches make continuation testable on
+  the supported synthetic dataset.
+- **SQLite experiment history:** runs, metrics, failures and transitions retain the
+  same logical experiment across recovery attempts.
+- **Preflight and failure diagnostics:** isolated checks and finite guards turn
+  broken training into inspectable, bounded failure records.
+- **Behavioral verification:** fresh-object, interruption and subprocess tests check
+  observable recovery behavior.
+
+## Evidence, with boundaries
+
+> **67 tests** on each Python 3.11/3.12 Hosted CPU job; **Docker build + doctor +
+> tiny training PASS**. Six interruption positions validate resume equivalence.
+> The documented showcase has **maximum parameter error 0**, at `atol=1e-7`,
+> **on the deterministic CPU validation path**. This is not a universal zero-error
+> or cross-hardware guarantee.
+
+[Merged V0.1 Hosted CI](https://github.com/kallist/torcharena/actions/runs/37044363967) ·
+[Evidence map](docs/PUBLIC_EVIDENCE.md) · [Local validation record](docs/VALIDATION.md) ·
+[Resume / portfolio copy](docs/RESUME_COPY.md) · [90-second demo script](docs/DEMO_SCRIPT_ZH.md)
 
 ## Installation
 
-Python 3.11 or 3.12 is recommended for this V0.1; local evidence currently covers
-Windows Python 3.12.14 / PyTorch 2.8.0+cpu. No GPU or dataset download is needed.
+Python 3.11 or 3.12 is recommended for this V0.1. Hosted CPU validation covers both
+on Linux; local validation covers Windows Python 3.12.14 / PyTorch 2.8.0+cpu.
+No GPU or dataset download is needed.
 
 ```bash
 python -m venv .venv
@@ -215,7 +264,8 @@ roundtrip, CPU uninterrupted/resumed equality at six interruption points, SIGINT
 hard process exit, healthy-checkpoint survival, failure persistence and preflight
 isolation. Subprocess tests invoke the installed console script. Tiny CPU datasets
 need no downloads or external provider calls. [Executed evidence](docs/VALIDATION.md)
-separates local testing from unobserved Hosted CI.
+records the original local testing; [public evidence](docs/PUBLIC_EVIDENCE.md)
+links the subsequent Hosted CI separately.
 
 ## Docker and CI
 
@@ -228,7 +278,8 @@ docker run --rm torcharena:local torcharena train /app/examples/tiny_cnn.yaml
 The CPU image runs as an unprivileged user. Docker configuration is IMPLEMENTED;
 local execution is NOT TESTED because the engine was unavailable. GitHub Actions
 defines Python 3.11/3.12 CPU lint/tests/build/showcase jobs and a Docker smoke job.
-Hosted CI is BLOCKED until a remote is configured; it has not passed.
+The [merged V0.1 Hosted run](https://github.com/kallist/torcharena/actions/runs/37044363967)
+passed all three jobs, including actual Docker build/doctor/tiny-training execution.
 
 ## Security and limitations
 
@@ -239,9 +290,11 @@ Hosted CI is BLOCKED until a remote is configured; it has not passed.
   inspection may deserialize local snapshots to check recoverability.
 - File flush/fsync/replace protects against failed temporary writes. Directory fsync,
   hardware/storage failure tolerance and network filesystem locks are not promised.
-- Static type checking, CUDA/AMP execution, Python 3.11/Linux execution and Docker/
-  Hosted runs are not established by the local Windows evidence. One StepLR resume
-  boundary emits a documented ordering warning despite state-equivalence PASS.
+- **TESTED:** deterministic CPU validation on Windows Python 3.12 and Hosted Linux
+  Python 3.11/3.12, plus Hosted Docker smoke. **NOT TESTED:** CUDA/AMP execution and
+  cross-hardware bitwise equivalence. **NOT IMPLEMENTED:** generic external DataLoader
+  resume, DDP and static type checking. One StepLR resume boundary emits a documented
+  ordering warning despite state-equivalence PASS.
 
 ## Roadmap
 
