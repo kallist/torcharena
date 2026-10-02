@@ -16,6 +16,12 @@ def race_table(console, result: dict):
         "Train. Race. Break. Resume.\nSequential real training · " + result["note"],
     )
     table = Table(title="Measured contestants", show_lines=True)
+    for row in result["rows"]:
+        console.print(
+            f"{row['model']} · Dataset: {row['dataset']} · Seed: {row['seed']} · "
+            f"Epochs: {row['epochs']}",
+            markup=False,
+        )
     for heading in ("Model / Run", "Accuracy (%)", "Val loss", "Time (s)", "Parameters", "Epochs"):
         table.add_column(heading)
     for row in result["rows"]:

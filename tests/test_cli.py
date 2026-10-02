@@ -57,6 +57,7 @@ def test_installed_cli_race_persists_real_runs(tmp_path):
     output = run_cli(tmp_path, "race", "examples/tiny_cnn.yaml", "examples/tiny_resnet.yaml")
     assert "Highest accuracy" in output
     assert "tiny_cnn" in output and "tiny_resnet" in output
+    assert "Dataset: synthetic_image_classification" in output and "Seed: 42" in output
     import sqlite3
 
     with sqlite3.connect(tmp_path / "home/torcharena.db") as db:

@@ -16,7 +16,7 @@ from torcharena.models import MODELS, make_model
 from torcharena.report import report
 from torcharena.runtime import environment
 from torcharena.safety import TrainingError, TrainingGuard
-from torcharena.storage import checked_id
+from torcharena.storage import checked_id, confined
 from torcharena.trainer import Trainer
 
 
@@ -225,6 +225,12 @@ def test_exclusive_lock_rejects_second_owner(tmp_path):
 def test_paths_reject_untrusted_ids(run_id):
     with pytest.raises(ValueError):
         checked_id(run_id)
+
+
+def test_artifact_confinement_rejects_external_path(repository, tmp_path):
+    with pytest.raises(ValueError, match="escapes"):
+        confined(repository.home, tmp_path / "external.pt")
+    assert confined(repository.home, repository.home / "runs") == repository.home / "runs"
 
 
 def test_comparison_ties_and_mismatch(repository, config):
