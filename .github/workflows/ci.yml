@@ -1,0 +1,45 @@
+name: CPU validation
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  cpu:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - run: pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+      - run: pip install -e '.[dev]'
+      - run: ruff check . && ruff format --check .
+      - run: pytest -q
+      - run: python -m build
+      - name: Showcase product paths
+        env:
+          TORCHARENA_HOME: .torcharena-ci
+          TORCHARENA_SHOWCASE_DIR: artifacts/ci-showcase
+        run: |
+          torcharena doctor
+          torcharena showcase race
+          torcharena showcase crash-resume
+          torcharena showcase graveyard
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: showcase-python-${{ matrix.python }}
+          path: artifacts/ci-showcase
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t torcharena:ci .
+      - run: docker run --rm torcharena:ci torcharena doctor
+      - run: docker run --rm torcharena:ci torcharena train /app/examples/tiny_cnn.yaml

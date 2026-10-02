@@ -1,0 +1,27 @@
+experiment:
+  name: tiny-cnn-demo
+  seed: 42
+dataset:
+  name: synthetic_image_classification
+  train_samples: 64
+  val_samples: 32
+  num_classes: 2
+model:
+  name: tiny_cnn
+  num_classes: 2
+training:
+  epochs: 4
+  batch_size: 16
+  learning_rate: 0.02
+  device: cpu
+  amp: false
+  deterministic: true
+checkpoint:
+  every_n_steps: 2
+  keep_last: 2
+  save_best: true
+early_stopping:
+  enabled: false
+  metric: val_loss
+  mode: min
+  patience: 3

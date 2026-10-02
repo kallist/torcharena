@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "torcharena"
+version = "0.1.0"
+description = "Train. Race. Break. Resume. A local PyTorch training workbench."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["torch>=2.8,<2.9", "typer>=0.16,<1", "rich>=14,<15", "PyYAML>=6,<7", "pydantic>=2.11,<3"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9", "ruff>=0.12,<1", "build>=1,<2", "numpy>=1.26,<3"]
+
+[project.scripts]
+torcharena = "torcharena.cli:app"
+
+[tool.setuptools.packages.find]
+include = ["torcharena*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
