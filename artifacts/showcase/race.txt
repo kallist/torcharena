@@ -4,7 +4,7 @@
 └────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 tiny_cnn · Dataset: synthetic_image_classification · Seed: 42 · Epochs: 4
 tiny_resnet · Dataset: synthetic_image_classification · Seed: 42 · Epochs: 4
-                                       Measured contestants                                        
+                                       Measured contestants
 ┌──────────────────────────────────────┬──────────────┬──────────┬──────────┬────────────┬────────┐
 │ Model / Run                          │ Accuracy (%) │ Val loss │ Time (s) │ Parameters │ Epochs │
 ├──────────────────────────────────────┼──────────────┼──────────┼──────────┼────────────┼────────┤
