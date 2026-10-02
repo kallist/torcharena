@@ -255,6 +255,7 @@ def test_early_stopping_persisted_and_restored(tmp_path):
 
 def test_corrupt_model_state_resume_is_actionable_and_keeps_status(repository, config):
     from torcharena.checkpoint import atomic_save
+    from torcharena.report import recoverability
 
     run_id = train(repository, config, demo_hook=interrupted_hook)
     path = repository.run_dir(run_id) / "checkpoints/last.pt"
@@ -265,3 +266,4 @@ def test_corrupt_model_state_resume_is_actionable_and_keeps_status(repository, c
     with pytest.raises(ValueError, match="Incompatible/corrupt"):
         resume(repository, run_id)
     assert repository.get(run_id)["status"] == "INTERRUPTED"
+    assert not recoverability(repository, run_id)[0]

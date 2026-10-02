@@ -7,7 +7,8 @@ import torch
 
 from torcharena.checkpoint import load_checkpoint
 from torcharena.config import RunConfig
-from torcharena.runtime import device_for
+from torcharena.models import make_model
+from torcharena.runtime import device_for, isolated_rng
 from torcharena.storage import confined
 
 
@@ -24,6 +25,14 @@ def recoverability(repository, run_id: str) -> tuple[bool, str]:
             raise ValueError("Checkpoint device type is unavailable or changed")
         if state["runtime"]["torch"] != str(torch.__version__):
             raise ValueError("Checkpoint PyTorch version mismatch")
+        with isolated_rng():
+            expected = make_model(config).state_dict()
+        if expected.keys() != state["model"].keys() or any(
+            expected[key].shape != state["model"][key].shape
+            or expected[key].dtype != state["model"][key].dtype
+            for key in expected
+        ):
+            raise ValueError("Checkpoint model shape/dtype mismatch")
     except (ValueError, OSError) as error:
         return False, str(error)
     return record["status"] in {"FAILED", "INTERRUPTED", "RUNNING", "RESUMING"}, (
