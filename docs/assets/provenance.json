@@ -1,0 +1,66 @@
+{
+  "source_commit": "b24a976617d6ee6a5c4cfc8e7a84b7e9139e34c7",
+  "hash_format": "SHA-256 of UTF-8 text with LF line endings",
+  "source_note": "Committed real-output transcripts; original runs and provenance remain in artifacts/showcase JSON/HTML. This is a replay, not a timed screen recording or a new training run.",
+  "transcripts": [
+    {
+      "path": "artifacts/showcase/race.txt",
+      "sha256": "36430b7d8083e2497e9fafefb64a0c8e0de56202d186300f8ead8ab49f189339",
+      "lines": 20
+    },
+    {
+      "path": "artifacts/showcase/crash-resume.txt",
+      "sha256": "2ca110abd1ef1a2fcda4a6287ae2d539689c7f52f3259e4b296911b371de0482",
+      "lines": 8
+    },
+    {
+      "path": "artifacts/showcase/graveyard.txt",
+      "sha256": "c9a4296d330067c24f84f3e606b95459370c2e4f056ea52429208092a06395b9",
+      "lines": 12
+    }
+  ],
+  "gif_duration_ms": 21900,
+  "gif_frames": 18,
+  "assets": [
+    {
+      "path": "crash-resume.png",
+      "bytes": 31562,
+      "size": [
+        1120,
+        400
+      ]
+    },
+    {
+      "path": "failure-graveyard.png",
+      "bytes": 34216,
+      "size": [
+        1120,
+        468
+      ]
+    },
+    {
+      "path": "model-race.png",
+      "bytes": 59244,
+      "size": [
+        1120,
+        636
+      ]
+    },
+    {
+      "path": "social-preview.png",
+      "bytes": 43961,
+      "size": [
+        1280,
+        640
+      ]
+    },
+    {
+      "path": "torcharena-demo.gif",
+      "bytes": 287964,
+      "size": [
+        1120,
+        640
+      ]
+    }
+  ]
+}
