@@ -1,0 +1,6 @@
+include Dockerfile .dockerignore
+recursive-include examples *.yaml
+recursive-include docs *.md
+recursive-include tests *.py
+recursive-include .github *.yml
+include artifacts/showcase/*.txt artifacts/showcase/*.html artifacts/showcase/*.json

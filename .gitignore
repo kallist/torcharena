@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .pytest_cache/
+.pytest_tmp/
+.pytest_cli_tmp/
+.pytest*_tmp/
+pytest-cache-files*/
 .ruff_cache/
 .torcharena/
 build/

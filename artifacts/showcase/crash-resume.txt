@@ -1,0 +1,8 @@
+┌─────────────────────────────────────── TORCH ARENA / Crash → Resume ───────────────────────────────────────┐
+│ INTERRUPTED: run-8f6b0c79afbd4b47800fcd5d68a6067e                                                          │
+│ Safe step: 3                                                                                               │
+│ Checkpoint persisted; original trainer released.                                                           │
+└────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+RESTORED: model / optimizer / scheduler / scaler / RNG / batch cursor
+RESUMED → COMPLETED · step 16
+Baseline equivalence: PASS · max parameter error 0 · atol 1e-7

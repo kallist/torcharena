@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+.r1 {color: #800080; text-decoration-color: #800080}
+.r2 {font-style: italic}
+.r3 {font-weight: bold}
+body {
+    color: #000000;
+    background-color: #ffffff;
+}
+</style>
+</head>
+<body>
+    <pre style="font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><code style="font-family:inherit"><span class="r1">┌───────────────────────────────────── TORCH ARENA / Failure Graveyard ──────────────────────────────────────┐</span>
+<span class="r1">│</span> Explicit deterministic demo-only NaN injection                                                             <span class="r1">│</span>
+<span class="r1">└────────────────────────────────────────────────────────────────────────────────────────────────────────────┘</span>
+<span class="r2">                                       Failure Graveyard                                        </span>
+┌──────────────────────────────────────┬────────┬─────────────────┬──────────────┬─────────────┐
+│<span class="r3"> Run / Name                           </span>│<span class="r3"> Status </span>│<span class="r3"> Cause           </span>│<span class="r3"> Epoch / Step </span>│<span class="r3"> Recoverable </span>│
+├──────────────────────────────────────┼────────┼─────────────────┼──────────────┼─────────────┤
+│ run-0f55a5ffea9b482fa45aad993e074553 │ FAILED │ non_finite_loss │ 0 / 2        │ YES         │
+│ showcase-tiny_cnn                    │        │                 │              │             │
+└──────────────────────────────────────┴────────┴─────────────────┴──────────────┴─────────────┘
+Detected: non_finite_loss · Detected non_finite_loss; inspect data and learning rate
+Last healthy checkpoint preserved; failure traceback persisted.
+</code></pre>
+</body>
+</html>
