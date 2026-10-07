@@ -190,7 +190,7 @@ YAML schema 是封闭的，会直接拒绝这类字段。
 因为权重文件回答的是「模型长什么样」，而不是「这次实验怎么继续」。
 
 ```python
-torch.save(model.state_dict(), "last.pt")   # 只有权重
+torch.save(model.state_dict(), "last.pt")  # 只有权重
 ```
 
 这个文件带不走继续训练真正需要的任何状态：

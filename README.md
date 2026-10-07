@@ -217,7 +217,7 @@ Because a weights file answers "what did the model look like?" — not "how do I
 experiment?".
 
 ```python
-torch.save(model.state_dict(), "last.pt")   # weights only
+torch.save(model.state_dict(), "last.pt")  # weights only
 ```
 
 That file cannot carry any of the state a continuation actually needs:
